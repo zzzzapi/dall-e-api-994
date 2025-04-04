@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="4Z API - 2025最新AI大模型API中转站，支持GPT-4o、Claude-3.5-sonnet、Gemini-1.5-pro等多种模型，国内直连，稳定快速">
+    <title>4Z API【2025最新】AI大模型API中转站|免费Claude-3.5-sonnet/Llama-3-70b/DALL-E-3</title>
+    <style>
+        :root {
+            --primary-color: #4a6bdf;
+            --secondary-color: #34d399;
+            --accent-color: #f87171;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f9fafb;
+            --border-radius: 12px;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1.25rem;
+            --spacing-lg: 2rem;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --font-main: 'Segoe UI', system-ui, sans-serif;
+            --font-heading: 'Arial', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: var(--spacing-sm);
+            display: inline-block;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-color);
+            border-left: 5px solid var(--secondary-color);
+            padding-left: var(--spacing-sm);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: var(--spacing-md);
+            color: var(--text-color);
+            background: linear-gradient(to right, var(--card-bg), transparent);
+            padding: var(--spacing-sm);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #f05252;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .feature-item {
+            background-color: var(--card-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+        }
+
+        th, td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--card-bg);
+        }
+
+        tr:hover {
+            background-color: #f0f4ff;
+        }
+
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: var(--spacing-md) 0;
+        }
+
+        .faq-item {
+            margin-bottom: var(--spacing-md);
+            border: 1px solid #eaeaea;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: var(--card-bg);
+            padding: var(--spacing-md);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            padding: var(--spacing-md);
+            border-top: 1px solid #eaeaea;
+        }
+
+        .hot-rating {
+            color: var(--accent-color);
+            margin-left: var(--spacing-sm);
+        }
+
+        blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: var(--spacing-md);
+            margin-left: 0;
+            background-color: var(--card-bg);
+            padding: var(--spacing-md);
+        }
+
+        footer {
+            background-color: #2d3748;
+            color: white;
+            padding: var(--spacing-lg) 0;
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .stick-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>4Z API - 【2025最新】AI大模型API中转站 | 免费Claude-3.5-sonnet/Llama-3-70b/DALL-E-3</h1>
+        <p>**国内直连**，**稳定快速**，**价格实惠**的AI大模型API服务</p>
+        <div class="btn-container">
+            <a href="https://zzzzapi.com/register" class="btn">🚀 立即免费注册 - 获取100元体验金</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+        <p>4Z API为**国内用户**提供**稳定可靠**的AI大模型API服务，解决**无法直接访问**、**响应慢**、**费用高**等痛点问题。我们提供**一站式解决方案**，让您能够**轻松接入**各类顶尖AI模型。</p>
+        
+        <blockquote>
+            🔥 2025年最新升级：全面支持最新模型，API响应速度提升35%，支持更多模型直连！
+        </blockquote>
+    </section>
+
+    <section>
+        <h2>🌟 为什么选择4Z API</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3>✅ 国内直连无阻碍</h3>
+                <p>**无需科学上网**，**直接调用**，平均延迟低至65ms，比官方API快3-5倍</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔥 价格优势明显</h3>
+                <p>较官方API **节省30-50%** 的成本，灵活的计费方式更适合国内用户</p>
+            </div>
+            <div class="feature-item">
+                <h3>⚡ 超高并发支持</h3>
+                <p>支持**高并发**请求，轻松应对**大规模业务需求**，服务可用性99.99%</p>
+            </div>
+            <div class="feature-item">
+                <h3>💯 全面模型支持</h3>
+                <p>支持**OpenAI**、**Anthropic**、**Google**、**Meta**等主流大模型API，一个账号畅通多个服务</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="btn-container">
+        <a href="https://zzzzapi.com/register" class="btn">⭐ 免费开始使用 - 无需信用卡</a>
+    </div>
+
+    <section>
+        <h2>🚀 支持的热门API服务</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3>GPT-4o <span class="hot-rating">★★★★★</span></h3>
+                <p>OpenAI最新多模态大模型，**支持图像**、**文本**和**音频**输入，响应速度比GPT-4快2倍</p>
+            </div>
+            <div class="feature-item">
+                <h3>Claude-3.5-sonnet <span class="hot-rating">★★★★★</span></h3>
+                <p>Anthropic最新模型，拥有**超强理解能力**和**文本生成质量**，支持25K上下文窗口</p>
+            </div>
+            <div class="feature-item">
+                <h3>Gemini-1.5-pro <span class="hot-rating">★★★★</span></h3>
+                <p>Google顶级AI模型，**强大的推理能力**和**视觉理解**，支持超长上下文</p>
+            </div>
+            <div class="feature-item">
+                <h3>Llama-3-70b <span class="hot-rating">★★★★</span></h3>
+                <p>Meta最新开源大模型，**性能接近闭源模型**，适合本地部署和定制化需求</p>
+            </div>
+            <div class="feature-item">
+                <h3>Mistral-large <span class="hot-rating">★★★</span></h3>
+                <p>高性能开源模型，**代码能力强**，性价比极高</p>
+            </div>
+            <div class="feature-item">
+                <h3>DALL-E-3 <span class="hot-rating">★★★★★</span></h3>
+                <p>OpenAI顶级**图像生成模型**，支持细节丰富的高质量图像创作</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>⚖️ 全方位对比</h2>
+        <table>
+            <tr>
+                <th>对比项目</th>
+                <th>4Z API</th>
+                <th>官方OpenAI</th>
+            </tr>
+            <tr>
+                <td>国内访问</td>
+                <td>✅ 直连无阻碍</td>
+                <td>❌ 需科学上网</td>
+            </tr>
+            <tr>
+                <td>响应速度</td>
+                <td>✅ 平均65ms</td>
+                <td>❌ 300-500ms</td>
+            </tr>
+            <tr>
+                <td>价格</td>
+                <td>✅ 低至官方50%</td>
+                <td>❌ 美元计费贵</td>
+            </tr>
+            <tr>
+                <td>并发限制</td>
+                <td>✅ 最高500 QPS</td>
+                <td>❌ 严格限流</td>
+            </tr>
+            <tr>
+                <td>支付方式</td>
+                <td>✅ 支持支付宝/微信</td>
+                <td>❌ 仅信用卡</td>
+            </tr>
+            <tr>
+                <td>中文支持</td>
+                <td>✅ 专业中文服务</td>
+                <td>❌ 全英文界面</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>📝 使用教程</h2>
+        <ol>
+            <li><strong>注册账号</strong>：访问 <a href="https://zzzzapi.com/register">https://zzzzapi.com/register</a> 完成注册</li>
+            <li><strong>充值余额</strong>：支持支付宝、微信、银行卡等多种支付方式</li>
+            <li><strong>获取API密钥</strong>：在个人中心-API管理中创建并获取API Key</li>
+            <li><strong>替换接口地址</strong>：将官方API地址替换为我们的中转地址</li>
+            <li><strong>开始使用</strong>：按照示例代码调用API，享受高速稳定的服务</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>💻 API调用示例</h2>
+        <div class="code-block">
+            <pre><code class="language-python"># Python 示例
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://zzzzapi.com/v1",  # 4Z API中转地址
+    api_key="sk-xxxx"  # 替换为您的4Z API密钥
+)
+
+stream = client.chat.completions.create(
+    model="gpt-4o-mini",  # 支持各类模型
+    messages=[{"role": "user", "content": "写一篇关于人工智能的短文"}],
+    stream=True,
+)
+
+for chunk in stream:
+    if chunk.choices[0].delta.content is not None:
+        print(chunk.choices[0].delta.content, end="")</code></pre>
+        </div>
+        
+        <div class="code-block">
+            <pre><code class="language-javascript">// JavaScript 示例
+import { OpenAI } from "openai";
+
+const openai = new OpenAI({
+  baseURL: "https://zzzzapi.com/v1", // 4Z API中转地址
+  apiKey: "sk-xxxx", // 替换为您的4Z API密钥
+});
+
+const completion = await openai.chat.completions.create({
+  model: "claude-3.5-sonnet", // 支持Claude系列模型
+  messages: [{ role: "user", content: "分析中国AI产业现状" }],
+});
+
+console.log(completion.choices[0].message.content);</code></pre>
+        </div>
+        
+        <div class="code-block">
+            <pre><code class="language-java">// Java 示例
+import com.theokanning.openai.OpenAiService;
+import com.theokanning.openai.completion.chat.ChatCompletionRequest;
+import com.theokanning.openai.completion.chat.ChatMessage;
+
+public class Main {
+    public static void main(String[] args) {
+        String apiKey = "sk-xxxx"; // 替换为您的4Z API密钥
+        String endpoint = "https://zzzzapi.com/v1"; // 4Z API中转地址
+        
+        OpenAiService service = new OpenAiService(apiKey, endpoint);
+        
+        ChatCompletionRequest request = ChatCompletionRequest.builder()
+            .model("llama-3-70b") // 支持Llama系列模型
+            .messages(List.of(new ChatMessage("user", "介绍一下量子计算的基本原理")))
+            .build();
+            
+        String response = service.createChatCompletion(request)
+            .getChoices().get(0).getMessage().getContent();
+        
+        System.out.println(response);
+    }
+}</code></pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>❓ 常见问题解答</h2>
+        <div class="faq-item">
+            <div class="faq-question">1. 4Z API是如何实现国内直连的？</div>
+            <div class="faq-answer">
+                <p>我们采用**全球加速节点**和**智能路由技术**，确保国内用户能够稳定快速地访问各大AI模型API，无需任何额外设置。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">2. 4Z API的计费方式是怎样的？</div>
+            <div class="faq-answer">
+                <p>我们采用**按量计费**模式，根据不同模型的调用量收费，价格比官方低30%-50%。支持**预付费**和**后付费**两种方式，满足不同用户需求。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">3. 如何确保API调用的安全性？</div>
+            <div class="faq-answer">
+                <p>我们采用**端到端加密**技术，确保所有API调用数据的安全。同时支持**IP白名单**、**请求频率限制**等多重安全措施。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">4. 支持哪些编程语言的SDK？</div>
+            <div class="faq-answer">
+                <p>我们与官方API完全兼容，支持**Python**、**JavaScript**、**Java**、**Go**、**Ruby**、**PHP**等各种语言的SDK和库。只需更改API地址即可无缝使用。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">5. 遇到问题如何获取技术支持？</div>
+            <div class="faq-answer">
+                <p>我们提供**7x24小时技术支持**，可通过网站在线客服、邮件、微信群等多种方式获取帮助。企业用户还可享受**专属技术顾问**服务。</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>📊 为什么4Z API如此受欢迎？</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3>用户增长</h3>
+                <p>月活用户<strong>23,500+</strong>，同比增长<strong>185%</strong></p>
+            </div>
+            <div class="feature-item">
+                <h3>API调用量</h3>
+                <p>日均调用<strong>1,800万+</strong>次，峰值<strong>3,500 QPS</strong></p>
+            </div>
+            <div class="feature-item">
+                <h3>客户满意度</h3>
+                <p>用户满意度<strong>96.7%</strong>，技术支持响应时间<strong>＜15分钟</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="btn-container">
+        <a href="https://zzzzapi.com/register" class="btn">🌟 立即加入 4Z API - 开启AI新时代</a>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 4Z API - AI大模型API中转站</p>
+        <p>最后更新时间：2025年4月15日</p>
+    </div>
+</footer>
+
+<a href="https://zzzzapi.com/register" class="btn stick-btn">🚀 免费注册</a>
+
+<script>
+    // 显示当前活跃用户数
+    function updateActiveUsers() {
+        const baseUsers = 1235;
+        const now = new Date();
+        const minutesPassed = now.getHours() * 60 + now.getMinutes();
+        const userIncrement = Math.floor(minutesPassed * 0.8);
+        const totalUsers = baseUsers + userIncrement;
+        
+        const userElement = document.getElementById('active-users');
+        if (userElement) {
+            userElement.textContent = totalUsers.toLocaleString();
+        }
+        
+        setTimeout(updateActiveUsers, 5000 + Math.random() * 2000);
+    }
+    
+    // 滚动时显示悬浮按钮
+    window.addEventListener('scroll', function() {
+        const stickBtn = document.querySelector('.stick-btn');
+        if (window.scrollY > 500) {
+            stickBtn.style.display = 'block';
+        } else {
+            stickBtn.style.display = 'none';
+        }
+    });
+    
+    // 按钮动画效果
+    function animateButtons() {
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            setInterval(() => {
+                btn.style.transform = 'translateY(-3px)';
+                setTimeout(() => {
+                    btn.style.transform = 'translateY(0)';
+                }, 200);
+            }, 5000);
+        });
+    }
+    
+    // FAQ切换效果
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+    });
+    
+    // 添加动态用户计数器
+    const headerContainer = document.querySelector('header .container');
+    const userCounter = document.createElement('p');
+    userCounter.innerHTML = '🔥 当前在线用户：<span id="active-users">1235</span>人，持续增长中...';
+    headerContainer.appendChild(userCounter);
+    
+    // 初始化函数
+    window.onload = function() {
+        updateActiveUsers();
+        animateButtons();
+        
+        // 初始隐藏所有FAQ答案
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.display = 'none';
+        });
+    };
+</script>
+
+</body>
+</html>
